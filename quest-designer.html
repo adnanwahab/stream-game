@@ -1,0 +1,39 @@
+
+<a href="/">Back to Title Screen</a>
+<h1>Quest Designer </h1>
+
+
+<input type="text" class="quest"> 
+<div class="quests"></div>
+
+<script>
+
+
+let q = document.querySelector('.quest')
+let questListView = document.querySelector('.quests')
+let questList = JSON.parse(localStorage.getItem('questList')) || []
+
+console.log(questList, typeof questList)
+questListView.innerHTML = questList.join(`<br>`);
+
+
+q.addEventListener('change', (event) => {
+    let newQuest = event.target.value
+
+    q.value = ''
+
+console.log(questList)
+    questList = questList.concat(newQuest)
+
+    questListView.innerHTML = questList.join(`<br>`);
+    console.log(questList)
+
+    localStorage.setItem('questList', JSON.stringify(questList))
+})
+
+
+
+</script>
+
+<iframe width="100%" height="548" frameborder="0"
+  src="https://observablehq.com/embed/@theodedeken/07-video-game-sales?cells=chart"></iframe>
